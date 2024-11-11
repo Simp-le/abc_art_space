@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="arkhip_ivanovich_kuindzhi">Архип Иванович Куинджи</string>
+
+    <string name="aik_a_cloud_over_the_steppe">Облако над степью.</string>
+    <string name="aik_a_cloud_over_the_steppe_year">1890-е</string>
+
+    <string name="aik_a_mountain_slope_crimea">Горный склон. Крым.</string>
+    <!--year-->
+
+    <string name="aik_birch_grove">Березовая роща.</string>
+    <!--year-->
+
+    <string name="aik_dnipro_in_the_morning">Днепр утром.</string>
+    <!--year-->
+
+    <string name="aik_elbrus_a_moonlit_night">Эльбрус. Лунная ночь.</string>
+    <string name="aik_elbrus_a_moonlit_night_year">Между 1890 и 1895</string>
+
+    <string name="aik_patches_of_moonlight_in_the_forest_winter">Пятна лунного света в лесу. Зима.</string>
+    <!--year-->
+
+    <string name="aik_rainbow">Радуга.</string>
+    <!--year-->
+
+    <string name="aik_sea_crimea">Море. Крым.</string>
+    <!--year-->
+
+    <string name="aik_the_clouds">Облака.</string>
+    <!--year-->
+
+    <string name="aik_wave">Волна.</string>
+    <string name="aik_wave_year">1890-е</string>
+</resources>

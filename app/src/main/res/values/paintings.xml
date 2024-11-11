@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="arkhip_ivanovich_kuindzhi">Arkhip Ivanovich Kuindzhi</string>
+
+    <string name="aik_a_cloud_over_the_steppe">A cloud over the steppe.</string>
+    <string name="aik_a_cloud_over_the_steppe_year">1890s</string>
+
+    <string name="aik_a_mountain_slope_crimea">A mountain slope. Crimea.</string>
+    <string name="aik_a_mountain_slope_crimea_year" translatable="false">1887</string>
+
+    <string name="aik_birch_grove">Birch grove.</string>
+    <string name="aik_birch_grove_year" translatable="false">1879</string>
+
+    <string name="aik_dnipro_in_the_morning">Dnipro in the morning.</string>
+    <string name="aik_dnipro_in_the_morning_year" translatable="false">1881</string>
+
+    <string name="aik_elbrus_a_moonlit_night">Elbrus. A moonlit night.</string>
+    <string name="aik_elbrus_a_moonlit_night_year">Between 1890 and 1895</string>
+
+    <string name="aik_patches_of_moonlight_in_the_forest_winter">Patches of moonlight in the forest. Winter.</string>
+    <string name="aik_patches_of_moonlight_in_the_forest_winter_year" translatable="false">1898–1908</string>
+
+    <string name="aik_rainbow">Rainbow.</string>
+    <string name="aik_rainbow_year" translatable="false">1900–1905</string>
+
+    <string name="aik_sea_crimea">Sea. Crimea.</string>
+    <string name="aik_sea_crimea_year" translatable="false">1898</string>
+
+    <string name="aik_the_clouds">The clouds.</string>
+    <string name="aik_the_clouds_year" translatable="false">1900–1905</string>
+
+    <string name="aik_wave">Wave.</string>
+    <string name="aik_wave_year">1890s</string>
+</resources>
