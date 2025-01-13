@@ -36,7 +36,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -55,7 +54,6 @@ import androidx.compose.ui.tooling.preview.PreviewScreenSizes
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.abc.artspace.ui.theme.ArtSpaceTheme
-import kotlin.math.abs
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,14 +63,6 @@ class MainActivity : ComponentActivity() {
         setContent { ArtSpaceApp() }
     }
 }
-
-// TODO: Full image with resize
-// TODO: check layouts for different screens
-// TODO: use dimens?
-// TODO: Check how it's done in gallery apps
-// TODO: Use ViewModel to save states outside of the Activity
-// TODO: Make various frames for each image (curly, wavy, angular, etc.)
-// TODO: Use Room for storing paintings
 
 @PreviewScreenSizes
 @PreviewFontScale
@@ -108,7 +98,6 @@ data class Painting(
     @StringRes val yearPublished: Int
 )
 
-// TODO: Maybe use constraint layout or check out custom layouts with placeholders. or use Scaffold for this one
 @Composable
 fun ArtSpaceLayout(modifier: Modifier = Modifier) {
 
@@ -177,7 +166,7 @@ fun ArtSpaceLayout(modifier: Modifier = Modifier) {
     )
 
     var showingPosition by remember { mutableIntStateOf(0) }
-    var showingPainting by remember { mutableStateOf(gallery[showingPosition]) }
+    val showingPainting = gallery[showingPosition]
 
     Column(
         modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally
@@ -210,14 +199,14 @@ fun ArtSpaceLayout(modifier: Modifier = Modifier) {
         ) {
             FunctionalButton(
                 icon = Icons.AutoMirrored.Sharp.ArrowBack,
-                onClick = { showingPainting = gallery[abs(--showingPosition % gallery.size)] },
+                onClick = { showingPosition = if (showingPosition != 0) showingPosition - 1 else gallery.lastIndex },
                 modifier = Modifier
                     .size(56.dp)
                     .shadow(elevation = 4.dp, shape = CircleShape)
             )
             FunctionalButton(
                 icon = Icons.AutoMirrored.Sharp.ArrowForward,
-                onClick = { showingPainting = gallery[abs(++showingPosition % gallery.size)] },
+                onClick = { showingPosition = if (showingPosition != gallery.lastIndex) showingPosition + 1 else 0 },
                 modifier = Modifier
                     .size(56.dp)
                     .shadow(elevation = 4.dp, shape = CircleShape)
@@ -281,74 +270,3 @@ fun FunctionalButton(
         Icon(icon, contentDescription)
     }
 }
-
-
-//val pagerState = rememberPagerState(pageCount = { gallery.size })
-//
-//val fling = PagerDefaults.flingBehavior(
-//    state = pagerState, pagerSnapDistance = PagerSnapDistance.atMost(4)
-//)
-//
-//val coroutineScope = rememberCoroutineScope()
-//
-//Column(
-//modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally
-//) {
-//    HorizontalPager(
-//        modifier = Modifier
-//            .fillMaxWidth()
-//            .wrapContentHeight()
-//            .weight(1f),
-//        state = pagerState,
-//        flingBehavior = fling,
-//        pageSpacing = 16.dp,
-//        contentPadding = PaddingValues(horizontal = 16.dp)
-//    ) { painting ->
-//        Column(modifier = Modifier.graphicsLayer {
-//            val pageOffset =
-//                ((pagerState.currentPage - painting) + pagerState.currentPageOffsetFraction).absoluteValue
-//            alpha = lerp(
-//                start = 0.5f, stop = 1f, fraction = 1f - pageOffset.coerceIn(0f, 1f)
-//            )
-//        }, horizontalAlignment = Alignment.CenterHorizontally) {
-//            Art(
-//                painting = gallery[painting],
-//                modifier = Modifier
-//                    .padding(top = 32.dp)
-//                    .sizeIn(maxWidth = 750.dp, maxHeight = 550.dp)
-//
-//            )
-//            Spacer(modifier = Modifier.height(32.dp))
-//            ArtInfo(
-//                painting = gallery[painting],
-//                modifier = Modifier
-//                    .widthIn(max = 400.dp)
-//                    .padding(bottom = 32.dp)
-//                    .background(MaterialTheme.colorScheme.secondaryContainer)
-//                    .padding(vertical = 8.dp, horizontal = 16.dp)
-//            )
-//        }
-//    }
-//
-//    Row(
-//        modifier = Modifier
-//            .fillMaxWidth(0.9f)
-//            .padding(bottom = 16.dp),
-//        horizontalArrangement = Arrangement.SpaceBetween
-//    ) {
-//        FunctionalButton(
-//            icon = Icons.AutoMirrored.Sharp.ArrowBack, onClick = {
-//                coroutineScope.launch {
-//                    pagerState.animateScrollToPage(pagerState.currentPage - 1)
-//                }
-//            }, enabled = pagerState.canScrollBackward, modifier = Modifier.size(56.dp)
-//        )
-//        FunctionalButton(
-//            icon = Icons.AutoMirrored.Sharp.ArrowForward, onClick = {
-//                coroutineScope.launch {
-//                    pagerState.animateScrollToPage(pagerState.currentPage + 1)
-//                }
-//            }, enabled = pagerState.canScrollForward, modifier = Modifier.size(56.dp)
-//        )
-//    }
-//}
